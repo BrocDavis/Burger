@@ -1,7 +1,7 @@
 let express = require("express");
 
 let router = express.Router();
-let bruger = require ("../models/burger.js")
+let burger = require ("../models/burger.js")
 
 router.get("/", function(req, res) {
     res.redirect("/burgers");
