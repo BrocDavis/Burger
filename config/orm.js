@@ -1,9 +1,9 @@
-var connection = require("../config/connection.js");
+let connection = require("../config/connection.js");
 
 function printQuestionMarks(num) {
-    var arr = [];
+    let arr = [];
   
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
       arr.push("?");
     }
   
@@ -11,20 +11,21 @@ function printQuestionMarks(num) {
   }
 
   function objToSql(ob) {
-    var arr = [];
+    let arr = [];
   
-    for (var key in ob) {
+    for (let key in ob) {
       arr.push(key + "=" + ob[key]);
     }
   
     return arr.toString();
   }
 
-  var orm = {
+  let orm = {
     all: function(tableInput, cb) {
-      var queryString = "SELECT * FROM " + tableInput + ";";
+      let queryString = "SELECT * FROM " + tableInput + ";";
       connection.query(queryString, function(err, result) {
         if (err) {
+          console.log(err);
           throw err;
         }
         cb(result);
@@ -32,7 +33,7 @@ function printQuestionMarks(num) {
     },
  
     create: function(table, cols, vals, cb) {
-      var queryString = "INSERT INTO " + table;
+      let queryString = "INSERT INTO " + table;
   
       queryString += " (";
       queryString += cols.toString();
@@ -52,7 +53,7 @@ function printQuestionMarks(num) {
     },
     
     update: function(table, objColVals, condition, cb) {
-      var queryString = "UPDATE " + table;
+      let queryString = "UPDATE " + table;
   
       queryString += " SET ";
       queryString += objToSql(objColVals);
